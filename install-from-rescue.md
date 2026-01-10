@@ -1,20 +1,22 @@
-Some vps companies don't permit user to mount customized iso, therefore transfer the rescue-mode-os to a install-iso-os is essential for concern about the preinstalled os.
-
-Sometimes the rescue-mode-os is too outdated to run `apt update`, so change the apt source to the archieved edition (not the newest, as its architecture may not be applicable ).
-```sh
-cat /etc/debian_version
+# Boot the original os. 
+Enable rescue mode, and reboot to grub and press `esc` quickly via vnc, then press `c` to command line mode, input `ls` to see disks, if the original partition isn't shown, load the proper disk driver.
 ```
-For debian 9, replace to the archieved source, then allow unsecure:
+insmod part_gpt  # gpt
+insmod part_msdos  # mbr
+ls  # check recognized disk condition again
 ```
-cat > /etc/apt/sources.list << 'EOF'
-deb http://archive.debian.org/debian/ stretch main contrib non-free
-deb http://archive.debian.org/debian-security/ stretch/updates main contrib non-free
-EOF
 
-echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid
-echo 'APT::Get::AllowUnauthenticated "true";' > /etc/apt/apt.conf.d/99allow-unauth
+For bios mode:
+```
+set root=(hd1)
+chainloader +1
+boot
+```
 
-apt update -o Acquire::AllowInsecureRepositories=true -o APT::Get::AllowUnauthenticated=true
-apt install wget -y
-
+For uefi mode:
+```
+set root=(hd1,gpt2)
+linux /install.amd/vmlinuz priority=low
+initrd /install.amd/initrd.gz
+boot
 ```
