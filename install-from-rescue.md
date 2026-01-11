@@ -32,3 +32,7 @@ Warning!!!
 dd if=debian_install.iso of=/dev/vda bs=4M status=progress && sync
 ```
 
+In pe mode, distinguish disks through size
+```
+cat /proc/partitions
+```
