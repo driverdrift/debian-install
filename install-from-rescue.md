@@ -16,7 +16,7 @@ boot
 For uefi mode:
 ```
 set root=(hd1,gpt2)
-linux /install.amd/vmlinuz priority=low
+linux /install.amd/vmlinuz priority=low  # could press `tab` to see if path autofilled to check correction
 initrd /install.amd/initrd.gz
 boot
 ```
@@ -24,3 +24,11 @@ boot
 # Download the debian cd-rom for a online install or dvd-rom for a offline install.
 [Debian Archive Release](https://cdimage.debian.org/cdimage/archive/)  
 [Debian Current Release](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/)  
+
+Download and then dd. Follow (this)[https://github.com/driverdrift/linux-docs/blob/main/downloader.md] way.
+
+Warning!!!
+```
+dd if=debian_install.iso of=/dev/vda bs=4M status=progress && sync
+```
+
