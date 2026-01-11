@@ -32,6 +32,11 @@ Warning!!!
 dd if=debian_install.iso of=/dev/vda bs=4M status=progress && sync
 ```
 
+add swap partition
+```
+sudo fdisk --wipe=never /dev/vdb
+```
+
 In pe mode, distinguish disks through size
 ```
 cat /proc/partitions
