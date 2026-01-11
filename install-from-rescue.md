@@ -27,6 +27,17 @@ boot
 
 Download and then dd. Follow [this](https://github.com/driverdrift/linux-docs/blob/main/downloader.md) way.
 
+```
+# 将文件精确调整为 1G (1024^3 字节)
+truncate -s 1G debian_install.iso
+它非常快，因为它并不真的往硬盘里写 300MB 的数据，而是通过改变文件系统的元数据来增加文件的“逻辑大小”（产生所谓的“稀疏文件”）。
+实实在在的 0（不是稀疏文件）
+fallocate -l 1G debian_install.iso
+# 方法 1：保留原文件长度
+dd if=debian-13.2.0-amd64-netinst.iso of=test.iso bs=4M conv=notrunc
+思路两个：一个是dd到整个救援盘，然后破坏分区，另一个是iso放在原救援盘，如果足够大（用虚拟机测试），然后lookback启动iso，可以重建grub试试
+```
+
 Warning!!!
 ```
 dd if=debian_install.iso of=/dev/vda bs=4M status=progress && sync
