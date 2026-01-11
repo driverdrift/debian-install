@@ -36,6 +36,8 @@ fallocate -l 1G debian_install.iso
 # 方法 1：保留原文件长度
 dd if=debian-13.2.0-amd64-netinst.iso of=test.iso bs=4M conv=notrunc
 思路两个：一个是dd到整个救援盘，然后破坏分区，另一个是iso放在原救援盘，如果足够大（用虚拟机测试），然后lookback启动iso，可以重建grub试试
+如果验证哈希值时候，有时候需要屏蔽日志
+dd if=/dev/vda bs=4M count=196 2>/dev/null | sha256sum
 ```
 
 Warning!!!
