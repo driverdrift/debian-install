@@ -8,5 +8,5 @@ if [[ "${1-}" =~ ^([Yy][Ee][Ss]|[Yy])$ ]]; then
     skip_confirm=true
 fi
 
-source ./choose_install_disk.sh
-disk_to_format=$(choose_install_disk "$skip_confirm")
+source ./disk_partition.sh
+disk_to_format=$(disk_partition "$skip_confirm")
