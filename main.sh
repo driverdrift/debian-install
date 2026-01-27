@@ -9,4 +9,5 @@ if [[ "${1-}" =~ ^([Yy][Ee][Ss]|[Yy])$ ]]; then
 fi
 
 source ./disk_partition.sh
+apt-get update 1>/dev/null
 disk_to_format=$(disk_partition "$skip_confirm")
