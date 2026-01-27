@@ -29,14 +29,26 @@ disk_partition() {
 		[[ "$ans" =~ ^([Yy]|[Yy][Ee][Ss])$ ]] || exit 1
 	fi
 
-	echo -e "g\n					\
-		n\n\n\n+1M\nt\n4\n			\
-		n\n\n\n+100M\nt\n\nuefi\n	\
-		n\n\n\n+512M\n				\
-		n\n\n\n-2049M\n				\
-		n\n\n\n+1G\n				\
-		n\n\n\n\nt\n\nswap\n		\
-		w\n" | fdisk $target 1>/dev/null
+	(
+		echo -e "g\n					\
+			n\n\n\n+1M\nt\n4\n			\
+			n\n\n\n+100M\nt\n\nuefi\n	\
+			n\n\n\n+512M\n				\
+			n\n\n\n-2049M\n				\
+			n\n\n\n+1G\n				\
+			n\n\n\n\nt\n\nswap\n		\
+			w\n"
+	) | fdisk $target 1>/dev/null
+
+	apt-get install dosfstools -y 1>/dev/null
+
+	(
+		mkfs.vfat -F32 -I -n ESP "${target}2"  # uefi partition for new os
+		mkfs.ext4 -F -L boot "${target}3"  # boot partition for new os
+		mkfs.ext4 -F -L vg "${target}4"  # root partition for new os
+		mkfs.ext4 -F -L install-iso "${target}5"  # root partition for install-iso and /boot
+		mkswap "${target}6"  # swap partition for low memory machine
+	) 1>/dev/null
 	
 	echo "$target"
 }
