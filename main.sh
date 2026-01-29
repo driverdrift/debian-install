@@ -19,4 +19,5 @@ source ./make_install_media.sh
 $(make_install_media "$disk_to_install")
 echo "Making install media completed."
 
-echo -e "All things completed. You can now exit the rescue mode, \nand then poweron your original os to continue installation..."
+echo -e "All things completed. You can now exit the rescue mode, \n\
+and then poweron your original os to continue installation..."
