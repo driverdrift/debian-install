@@ -10,4 +10,4 @@ fi
 
 source ./disk_partition.sh
 apt-get update 1>/dev/null
-disk_to_format=$(disk_partition "$skip_confirm")
+disk_to_install=$(disk_partition "$skip_confirm")
