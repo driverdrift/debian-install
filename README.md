@@ -12,7 +12,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/driverdrift/debian-install/ma
 
 Partition sample
 | Device     | Size   | Type             | FSTYPE   | Mode      | Notes                                                                                         |
-| ---------- | -----: | ---------------- | -------- | --------- | --------------------------------------------------------------------------------------------- |
+| :--------- | -----: | :--------------- | :------- | :-------- | :-------------------------------------------------------------------------------------------- |
 | /dev/sdX1/ | 1M     | BIOS boot        | biosgrub | Bios      | Reserved BIOS boot area, do not format it                                                     |
 | /dev/sdX2/ | 100M   | EFI System       | FAT32    | Uefi      | ESP, unencrypted                                                                              |
 | /dev/sdX3/ | 512M   | Linux filesystem | ext4     | Bios&Uefi | Boot partition for pure os to install, unencrypted                                            |
