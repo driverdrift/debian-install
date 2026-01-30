@@ -17,5 +17,5 @@ Partition sample
 | /dev/sdX2/ | 100M   | EFI System       | FAT32    | Uefi      | ESP, unencrypted                                                                              |
 | /dev/sdX3/ | 512M   | Linux filesystem | ext4     | Bios&Uefi | Boot partition for pure os to install, unencrypted                                            |
 | /dev/sdX4/ | -2049M | Linux filesystem | ext4     | Bios&Uefi | /root and /swap partition for pure os to install, encrypted volume, then configure LVM on it. |
-| /dev/sdX5/ | 1G     | Linux filesystem | ext4     | Bios&Uefi | Install-media, formatted after installation                                                   |
-| /dev/sdX6/ | 1G     | Linux swap       | swap     | Bios&Uefi | Swap Memory for low memory machine during the installation                                    |
+| /dev/sdX5/ | 1G     | Linux filesystem | ext4     | Bios&Uefi | Install-media, encrypted after installation                                                   |
+| /dev/sdX6/ | 1G     | Linux swap       | swap     | Bios&Uefi | Swap Memory for low memory machine during the installation, encrypted after installation      |
