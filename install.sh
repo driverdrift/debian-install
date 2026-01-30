@@ -2,7 +2,7 @@
 set -euo pipefail
 trap 'echo "operation is interrupted"; exit 130' INT
 
-REPO_URL="https://github.com/driverdrift/debian-intsall/archive/main.tar.gz"
+REPO_URL="https://github.com/driverdrift/debian-install/archive/main.tar.gz"
 WORKDIR="/tmp/debian-install"
 
 rm -rf "$WORKDIR" && mkdir -p "$WORKDIR"
