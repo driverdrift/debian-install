@@ -4,3 +4,8 @@ Some vps companies don't permit user to mount customized iso, however people con
 Follow [this](./install-from-rescue.md) steps.
 
 - If no rescue-mode is provided or the rescue-mode disk is small to contain netinst.iso, then use the only hard disk to install new os. See [this](./install-from-origin) ways.
+
+Run
+```sh
+sudo
+```
