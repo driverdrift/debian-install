@@ -12,7 +12,7 @@ trap 'echo "operation is interrupted"; exit 130' INT
 
 skip_confirm=false
 if [[ "${1-}" =~ ^([Yy][Ee][Ss]|[Yy])$ ]]; then
-    skip_confirm=true
+	skip_confirm=true
 fi
 
 echo "Start disk partiton."
