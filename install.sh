@@ -15,7 +15,7 @@ command -v wget &>/dev/null || {
 }
 
 echo "Downloading and extracting..."
-wget -qO- "$URL" | tar -xz -C "$WORKDIR" --strip-components=1
+wget -qO- "$REPO_URL" | tar -xz -C "$WORKDIR" --strip-components=1
 
 cd "$WORKDIR"
 echo "Done! Current directory: $(pwd)"
