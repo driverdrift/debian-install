@@ -30,7 +30,7 @@ disk_partition() {
 	fi
 
 	source ./ensure_unmounted.sh
-	ensure_unmounted.sh "$target" >&2
+	ensure_unmounted "$target" >&2
 	
 	(
 		echo -e "g\n					\
