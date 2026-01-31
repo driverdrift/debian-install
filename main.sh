@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # This is better than `#!/bin/bash`
 
+if [ "$EUID" -ne 0 ]; then
+  echo "Run with sudo or as root."
+  exit 1
+fi
+
 set -euo pipefail
 # 'e' means error exit(function return or exit not zero)
 # 'u' means undefined variable exit
