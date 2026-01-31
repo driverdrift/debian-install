@@ -5,9 +5,15 @@ Follow [this](./install-from-rescue.md) steps.
 
 - If no rescue-mode is provided or the rescue-mode disk is small to contain netinst.iso, then use the only hard disk to install new os. See [this](./install-from-origin) ways.
 
-Run the code below to install.
+Run the code below to install automatically.
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/driverdrift/debian-install/main/install.sh) y
+
+```
+Or run the code below to install manually.
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/driverdrift/debian-install/main/install.sh)
+
 ```
 
 Partition sample
