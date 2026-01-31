@@ -5,10 +5,7 @@ trap 'echo "operation is interrupted"; exit 130' INT
 REPO_URL="https://github.com/driverdrift/debian-install/archive/main.tar.gz"
 WORKDIR="/tmp/debian-install"
 
-skip_confirm=false
-if [[ "${1-}" =~ ^([Yy][Ee][Ss]|[Yy])$ ]]; then
-	skip_confirm=true
-fi
+skip_confirm=${1:-false}
 
 rm -rf "$WORKDIR" && mkdir -p "$WORKDIR"
 
