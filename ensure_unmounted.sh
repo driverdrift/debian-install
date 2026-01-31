@@ -8,10 +8,12 @@ ensure_unmounted() {
 		done |
 		awk '{print length, $0}' | sort -rn | cut -d' ' -f2-
 	)
-	echo "all mountpoints: ${mountpoints[@]}"
+
 	if [ -z "$mountpoints" ]; then
 		return 0
 	fi
+	echo "all mountpoints: ${mountpoints[@]}"
+	
 	safe_pids=$(ps -eo pid,tty,comm | awk '
 		$2 != "?" && $3 ~ /(bash|sshd|login|tmux|screen)/ { print $1 }
 	')
