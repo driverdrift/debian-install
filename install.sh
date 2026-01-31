@@ -4,6 +4,7 @@ trap 'echo "operation is interrupted"; exit 130' INT
 
 if [ "$EUID" -ne 0 ]; then
   echo "Run with sudo or as root."
+  echo 'sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/driverdrift/debian-install/main/install.sh) y"'
   exit 1
 fi
 
