@@ -5,7 +5,7 @@ make_install_media() {
 	source ./grub-sample/hd-installer-grub-sample.cfg
 	echo umounting -R "$1"
 	source ./ensure_unmounted.sh
-	ensure_unmounted.sh "$1"
+	ensure_unmounted "$1"
 	rm -rf "$mount_path"
 }
 
