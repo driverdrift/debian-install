@@ -3,9 +3,13 @@ set -euo pipefail
 trap 'echo "operation is interrupted"; exit 130' INT
 
 if [ "$EUID" -ne 0 ]; then
-  echo "Run with sudo or as root."
-  echo 'sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/driverdrift/debian-install/main/install.sh) y"'
-  exit 1
+	echo "Run with sudo or as root."
+  	if [[ "${1-}" =~ ^([Yy][Ee][Ss]|[Yy])$ ]]; then
+		echo 'sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/driverdrift/debian-install/main/install.sh) y"'
+	else
+		echo 'sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/driverdrift/debian-install/main/install.sh)"'
+	fi
+	exit 1
 fi
 
 REPO_URL="https://github.com/driverdrift/debian-install/archive/main.tar.gz"
