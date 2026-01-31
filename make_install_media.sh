@@ -94,7 +94,8 @@ EOF
 		
 		echo "Attempt $count / $max_retry" >&2
 		
-		if (aria2c -x 16 -s 16 -c --min-split-size=1M -d "$mount_path" "$url" &>/dev/null); then
+		if (aria2c -x 16 -s 16 -c --min-split-size=1M  --summary-interval=0 --console-log-level=error \
+		--file-allocation=trunc -d "$mount_path" "$url" "$url" 2>/dev/null); then
 			if [[ $(sha256sum "$mount_path/$ISO" | awk '{print $1}') == "$SHA" ]]; then
 				echo "Download and checksum succeeded."
 				break
